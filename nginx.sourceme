@@ -1,0 +1,11 @@
+#!/bin/csh
+# SOURCEME!!! - Cris - Sept 30 2022
+
+cd /home/webserver/www/
+
+touch ./wsgi_dev.reload
+# Note: The running uwsgi for dev must be stopped first.
+uwsgi --ini ./uwsgi_dev.ini --touch-reload ./wsgi_dev.reload
+
+# Note: Stop running nginx before relaunch.
+nginx -c /home/webserver/nginx/conf/gps_dev_nginx.conf
